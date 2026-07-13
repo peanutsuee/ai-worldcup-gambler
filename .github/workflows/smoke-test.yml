@@ -1,0 +1,45 @@
+name: Smoke Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run smoke test
+        run: python tests/smoke_test.py
+
+      - name: Run full tournament test
+        run: python tests/full_run_test.py
+
+      - name: Run loan test
+        run: python tests/loan_test.py
+
+      - name: Run JSON mode test
+        run: python tests/json_mode_test.py
+
+      - name: Run news signal test
+        run: python tests/news_signal_test.py
+
+      - name: Run agent signal strategy test
+        run: python tests/agent_signal_strategy_test.py
+
+      - name: Run short demo
+        run: python examples/demo.py
+
+      - name: Run full demo
+        run: python examples/full_demo.py
+
+      - name: Run loan demo
+        run: python examples/loan_demo.py

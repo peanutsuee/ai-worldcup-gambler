@@ -2,6 +2,6 @@ __pycache__/
 *.pyc
 .DS_Store
 gambler_save.json
+*_output.txt
 .venv/
 venv/
-*_output.txt
